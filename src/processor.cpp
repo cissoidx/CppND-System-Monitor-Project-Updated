@@ -1,40 +1,40 @@
 #include "processor.h"
 #include "linux_parser.h"
 
-using std::stoi;
+using std::stol;
 
 // TODO: Return the aggregate CPU utilization
 float Processor::Utilization() {
     float CPU_Percentage;
-    int PrevIdle;
-    int Idle;
-    int PrevNonIdle;
-    int NonIdle;
-    int PrevTotal;
-    int Total;
-    int totald;
-    int idled;
+    long PrevIdle;
+    long Idle;
+    long PrevNonIdle;
+    long NonIdle;
+    long PrevTotal;
+    long Total;
+    long totald;
+    long idled;
 
     auto vvalue = LinuxParser::CpuUtilization();
-    guest_nice = stoi(vvalue.back());
+    guest_nice = stol(vvalue.back());
     vvalue.pop_back();
-    guest = stoi(vvalue.back());
+    guest = stol(vvalue.back());
     vvalue.pop_back();
-    steal = stoi(vvalue.back());
+    steal = stol(vvalue.back());
     vvalue.pop_back();
-    softirq = stoi(vvalue.back());
+    softirq = stol(vvalue.back());
     vvalue.pop_back();
-    irq = stoi(vvalue.back());
+    irq = stol(vvalue.back());
     vvalue.pop_back();
-    iowait = stoi(vvalue.back());
+    iowait = stol(vvalue.back());
     vvalue.pop_back();
-    idle = stoi(vvalue.back());
+    idle = stol(vvalue.back());
     vvalue.pop_back();
-    system = stoi(vvalue.back());
+    system = stol(vvalue.back());
     vvalue.pop_back();
-    nice = stoi(vvalue.back());
+    nice = stol(vvalue.back());
     vvalue.pop_back();
-    user = stoi(vvalue.back());
+    user = stol(vvalue.back());
     vvalue.pop_back();
 
     // cpu utilization calculation
@@ -59,5 +59,8 @@ float Processor::Utilization() {
     prevsteal = steal;
     prevguest = guest;
     prevguest_nice = guest_nice;
+
+    // stable solution
+    // CPU_Percentage = float(LinuxParser::ActiveJiffies())/float(LinuxParser::Jiffies());
     return CPU_Percentage;
 }

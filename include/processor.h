@@ -7,26 +7,26 @@ class Processor {
 
   // TODO: Declare any necessary private members
  private:
-  int prevuser = 0;
-  int user = 0;
-  int prevnice = 0;
-  int nice = 0;
-  int prevsystem = 0;
-  int system = 0;
-  int previdle = 0;
-  int idle = 0;
-  int previowait = 0;
-  int iowait = 0;
-  int previrq = 0;
-  int irq = 0;
-  int prevsoftirq = 0;
-  int softirq = 0;
-  int prevsteal = 0;
-  int steal = 0;
-  int prevguest = 0;
-  int guest = 0;
-  int prevguest_nice = 0;
-  int guest_nice = 0;
+  long prevuser = 0;
+  long user = 0;
+  long prevnice = 0;
+  long nice = 0;
+  long prevsystem = 0;
+  long system = 0;
+  long previdle = 0;
+  long idle = 0;
+  long previowait = 0;
+  long iowait = 0;
+  long previrq = 0;
+  long irq = 0;
+  long prevsoftirq = 0;
+  long softirq = 0;
+  long prevsteal = 0;
+  long steal = 0;
+  long prevguest = 0;
+  long guest = 0;
+  long prevguest_nice = 0;
+  long guest_nice = 0;
 
 };
 
