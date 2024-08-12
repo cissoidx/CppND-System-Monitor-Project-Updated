@@ -23,6 +23,6 @@ string Format::ElapsedTime(long seconds) {
     min_str.insert(0, 2-min_str.length(), '0');
     sec_str = to_string(mm);
     sec_str.insert(0, 2-sec_str.length(), '0');
-    format_time = to_string(hh)+":"+min_str+":"+to_string(ss);
+    format_time = to_string(hh)+":"+min_str+":"+sec_str;
     return format_time;
 }
