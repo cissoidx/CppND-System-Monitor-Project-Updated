@@ -197,12 +197,10 @@ int LinuxParser::RunningProcesses() {
   int value;
   std::ifstream filestream(kProcDirectory+kStatFilename);
   if (filestream.is_open()) {
-    while (std::getline(filestream, line)) {
-      std::istringstream linestream(line);
-      while (linestream >> key >> value) {
-        if (key == "procs_running") {
-          return value;
-        }
+    std::istringstream linestream(line);
+    while (linestream >> key >> value) {
+      if (key == "procs_running") {
+        return value;
       }
     }
   }
@@ -300,7 +298,8 @@ long LinuxParser::UpTime(int pid) {
     std::istringstream linestream(line);
     while (linestream >> value){
       if (count == 22){
-        uptime = static_cast<long>(stof(value)/float(sysconf(_SC_CLK_TCK)));
+        uptime = LinuxParser::UpTime() - stof(value)/float(sysconf(_SC_CLK_TCK));
+        break;
       }
       count++;
     }
