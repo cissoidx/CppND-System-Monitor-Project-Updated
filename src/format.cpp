@@ -21,7 +21,7 @@ string Format::ElapsedTime(long seconds) {
     ss = seconds - hh*3600 - mm*60;
     min_str = to_string(mm);
     min_str.insert(0, 2-min_str.length(), '0');
-    sec_str = to_string(mm);
+    sec_str = to_string(ss);
     sec_str.insert(0, 2-sec_str.length(), '0');
     format_time = to_string(hh)+":"+min_str+":"+sec_str;
     return format_time;
