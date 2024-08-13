@@ -27,7 +27,6 @@ class Processor {
   long guest = 0;
   long prevguest_nice = 0;
   long guest_nice = 0;
-
 };
 
 #endif
